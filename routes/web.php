@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [penyimpananController::class, 'index']);
+Route::get('/', [penyimpananController::class, 'index'])->name('penyimpanan.index');
 Route::get('/tambah', [penyimpananController::class, 'create'])->name('penyimpanan.create');
+Route::post('/tambah', [penyimpananController::class, 'store'])->name('penyimpanan.store');

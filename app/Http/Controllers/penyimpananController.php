@@ -13,7 +13,7 @@ class penyimpananController extends Controller
      */
     public function index()
     {
-        $penyimpanan = DB::table('penyimpanan')->get();
+        $penyimpanan = Penyimpanan::get();
         return view('penyimpanan', compact('penyimpanan'));
     }
 
@@ -30,10 +30,13 @@ class penyimpananController extends Controller
         $request->validate([
             'isian' => 'required',
             'nama' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'moto_kerja' => 'required',
           ]);
-          DB::table('penyimpanan')->create($request->all());
-          return redirect()->route('posts.index')
-            ->with('success', 'Post created successfully.');
+          Penyimpanan::create($request->all());
+          return redirect()->route('penyimpanan.index')
+            ->with('success', 'Item created successfully.');
     }
 
     /**
@@ -41,7 +44,11 @@ class penyimpananController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //get post by ID
+        $penyimpanan = Penyimpanan::findOrFail($id);
+
+        //render view with post
+        return view('penyimpanan.ubahPenyimpanan', compact('penyimpanan'));
     }
 
     /**
