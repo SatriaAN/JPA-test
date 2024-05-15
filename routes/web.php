@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [penyimpananController::class, 'index'])->name('penyimpanan.index');
 Route::get('/tambah', [penyimpananController::class, 'create'])->name('penyimpanan.create');
 Route::post('/tambah', [penyimpananController::class, 'store'])->name('penyimpanan.store');
+Route::get('/ubah/{id}', [penyimpananController::class, 'show'])->name('penyimpanan.show');
+Route::put('/ubah/{id}', [penyimpananController::class, 'update'])->name('penyimpanan.update');
+Route::delete('/hapus/{id}', [penyimpananController::class, 'destroy'])->name('penyimpanan.delete');

@@ -34,8 +34,14 @@
                                 <td>{{ $simpan->alamat }}</td>
                                 <td>{{ $simpan->moto_kerja }}</td>
                                 <td style="padding: 1rem">
-                                    <a class="btn btn-sm btn-outline-warning mx-3" href="">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger " href="">Delete</a>
+                                    <form action="{{ route('penyimpanan.delete', ['id' => $simpan->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a class="btn btn-sm btn-outline-warning mx-3"
+                                            href="{{ url('/ubah/' . $simpan->id) }}">Edit</a>
+                                        <button class="btn btn-sm btn-outline-danger " type="submit"
+                                            value="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
